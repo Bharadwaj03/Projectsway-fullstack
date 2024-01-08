@@ -10,14 +10,14 @@ const StatusTable = () => {
   const [showOptions, setShowOptions] = useState(null);
   const [taskData, setTaskData] = useState(null);
   console.log(taskData)
-  const [phaseSprintData, setPhaseSprintData] = useState(null); // New state for phase and sprint data
+  const [phaseSprintData, setPhaseSprintData] = useState(null); 
   console.log("phase",phaseSprintData)
   const name = localStorage.getItem('googleUserName');
   console.log("name", name);
   const image = localStorage.getItem('googleUserProfileUrl');
-  const { listUrl} = useParams(); // Get the listUrl parameter from the URL
+  const { listUrl} = useParams(); 
   console.log('List URL from params:', listUrl); 
-  console.log('List URL:', listUrl); // Add this console log
+  console.log('List URL:', listUrl);
   const projectName = localStorage.getItem('projectName');
   console.log('p',projectName)
 
@@ -39,7 +39,7 @@ const StatusTable = () => {
 
   useEffect(() => {
     const fetchPhaseSprintData = async () => {
-      // Replace 'some_space_url' with the actual space URL
+     
       const encodedSpaceUrl = encodeURIComponent('https://app.clickup.com/9016104096/v/li/901600834824');
       const response = await fetch(`http://localhost:8000/api/get_phase_sprint_names/${encodedSpaceUrl}`);
 
@@ -58,17 +58,17 @@ const StatusTable = () => {
   const handleShareDocument = () => {
     console.log('Share Document clicked');
     setShowOptions(null);
-    // Add logic for sharing document
+   
   };
 
   const handleDeleteDocument = () => {
     console.log('Delete Document clicked');
     setShowOptions(null);
-    // Add logic for deleting document
+   
   };
 
   const addNewRow = () => {
-    // Add logic to handle the addition of a new row
+   
     console.log('+Add clicked');
   };
   const formatDate = (date) => {
@@ -88,22 +88,22 @@ const StatusTable = () => {
       case 'urgent':
         return 'rgba(230, 73, 94)';
       default:
-        return 'grey'; // Set the default background color
+        return 'grey'; 
     }
   };
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'no fix needed':
-        return 'rgba(150, 155, 217)'; // Set the background color for 'needed'
+        return 'rgba(150, 155, 217)'; 
       case 'in progress':
-        return 'black'; // Set the background color for 'in progress'
+        return 'black'; 
 
       case 'to do':
         return 'rgba(200, 200, 204)'
       
       default:
-        return 'grey'; // Set the default background color
+        return 'grey'; 
     }
   };
 
@@ -157,7 +157,7 @@ const StatusTable = () => {
                   <tr id='r3'>
                     <th id='t1' className="col-md-4 sm-2" style={{ width: '1660px', fontSize: '16px', paddingLeft: '33px' }}>Name</th>
                     <th id='t3' className="col-md-2" style={{ width: '690px', paddingLeft: '49px', fontSize: '16px' }}>Priority</th>
-                    <th id='t4' className="col-md-2" style={{ width: '690px', paddingLeft: '49px', fontSize: '16px' }}>Status</th>
+                    <th id='t4' className="col-md-2" style={{ width: '690px', paddingLeft: '83px', fontSize: '16px' }}>Status</th>
                     <th id='t5' className="col-md-2" style={{ width: '690px', paddingLeft: '29px', fontSize: '16px' }}>Est.Deliv Date</th>
                   </tr>
                 </thead>
@@ -173,10 +173,10 @@ const StatusTable = () => {
             >
               <FaEllipsisV />
             </div>
-            {/* Assuming task.Attachments is an object with a 'status' property */}
+         
             {task.name}
           </div>
-          {/* Assuming showOptions is a state variable */}
+       
           {showOptions && (
             <div className="options-box">
               <div onClick={handleShareDocument}>
@@ -196,7 +196,7 @@ const StatusTable = () => {
     borderRadius: '20px',
     padding: '0px 6px',
     marginTop: '38px',
-    textAlign: 'center', // Center text horizontally
+    textAlign: 'center', 
     verticalAlign:'middle',
   }}
 >
@@ -205,9 +205,9 @@ const StatusTable = () => {
      
       width:'140px',
       backgroundColor: getPriorityColor(task.priority && task.priority.priority),
-      padding: '7px 6px', // Adjust padding to control the background color's appearance
+      padding: '7px 6px', 
       borderRadius: '20px',
-      lineHeight: '1.5', // Center text vertically within the span
+      lineHeight: '1.5', 
       textTransform: 'capitalize',
       display: 'inline-block',
     }}
@@ -233,7 +233,7 @@ const StatusTable = () => {
       fontFamily:'Arial',
       width:'140px',
       backgroundColor: getStatusColor(task.status && task.status.status),
-      padding: '7px 6px', // Adjust padding to control the background color's appearance
+      padding: '7px 6px', 
       borderRadius: '20px',
       display:'inline-block',
       lineHeight:'1.5',

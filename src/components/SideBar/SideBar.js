@@ -3,7 +3,7 @@
 
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import { Link, useLocation,useNavigate  } from 'react-router-dom';
 import './SideBar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,30 +18,44 @@ const Sidebar = () => {
   const [activeLink, setActiveLink] = useState('');
   const projectName = localStorage.getItem('projectName');
   const navigate=useNavigate()
+  const clickedListId = localStorage.getItem('clickedListId');
+
+
+  const handleLinkClick = useCallback((path) => {
+    setActiveLink(path);
+  }, []);
 
 
   const handleBackClick = () => {
-    // Navigate back to the dashboard
+    
     navigate('/dashboard')
   };
+
+ 
+  const updateStatusTableLink = useCallback(() => {
+    const statusTableUrl = `https://app.clickup.com/${clickedListId}/v/li/${clickedListId}`;
+    handleLinkClick(`/statustable/${clickedListId}?listUrl=${encodeURIComponent(statusTableUrl)}`);
+  }, [clickedListId, handleLinkClick]);
+
+  useEffect(() => {
+   
+    updateStatusTableLink();
+  }, [updateStatusTableLink]);
+
+ 
+  useEffect(() => {
+    updateStatusTableLink();
+  }, [clickedListId, updateStatusTableLink]);
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location.pathname]);
  
   
 
 
-  
 
-
-  
-  
  
- 
-
-
-  const handleLinkClick = (path) => {
-    setActiveLink(path);
-  };
-
-  // Synchronize state on location change
   useEffect(() => {
     setActiveLink(location.pathname);
   }, [location.pathname]);
@@ -58,7 +72,7 @@ const Sidebar = () => {
 
         <nav className="sidebar-nav">
         <FontAwesomeIcon icon={faArrowLeft} style={{fontSize:'15px',color:'black',border:'1px solid black',padding:'8px',borderRadius:'30px',position:'absolute',left:'15%',cursor:'pointer'}}   onClick={handleBackClick} />
-          <h1  style={{color:'black',fontSize:'24px',fontWeight:'500',fontFamily:'Arial',marginTop:'26px',cursor:'pointor',paddingLeft:'10px'}}>{projectName}</h1>
+          <h1  style={{color:'black',fontSize:'24px',fontWeight:'500',fontFamily:'Arial',marginTop:'26px',cursor:'pointor',paddingLeft:'20px'}}>{projectName}</h1>
         
           <ul>
             <li>
@@ -71,14 +85,13 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-            
-              <Link
-                to="/statustable"
-                className={`sidebar-link ${activeLink === '/statustable' ? 'active-link' : ''}`}
-                onClick={() => handleLinkClick('/statustable')}
-              >
-                <FontAwesomeIcon className="fonts" icon={faTable} /> Status Table
-              </Link>
+            <Link
+        to={`/statustable/${clickedListId}`}
+        className={`sidebar-link ${location.pathname.startsWith('/statustable') ? 'active-link' : ''}`}
+        onClick={() => handleLinkClick(`/statustable/${clickedListId}`)}
+      >
+        <FontAwesomeIcon className="fonts" icon={faTable} /> Status Table
+      </Link>
             </li>
             <li>
               <Link
