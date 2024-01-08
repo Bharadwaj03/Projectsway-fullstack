@@ -1,0 +1,141 @@
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: rgb(247, 247, 247);
+  }
+  .sidebar {
+      width: 310px;
+      color: #fff;
+      padding: 10px;
+      height: 800px;
+      border-radius: 0px;
+      background-color: rgb(247, 247, 247);
+      position: relative;
+     
+  
+    }
+    
+
+    .sidebar-nav ul {
+      list-style: none;
+      text-decoration: none;
+      font-family: Arial;
+      padding-right: 19px;
+      margin-left: 58px;
+      margin-top: 44px;
+      /* position: fixed; */
+      line-height: 0px;
+      align-items: start;
+   
+      
+    }
+    
+    .sidebar-nav li {
+      margin-bottom: 10px;
+      text-decoration: none;
+      margin-left: -15px;
+      text-align: left;
+      font-family: Arial;
+      position: relative;
+      
+     
+   
+    }
+    
+   
+   
+    
+    
+    
+     
+    .sidebar-nav li link{
+      color: rgb(7, 136, 136);
+      text-decoration: none;
+
+      
+    }
+   
+    .sidebar-link {
+      color: black;
+      font-weight: 500;
+      font-family: 'Arial';
+      text-decoration: none;
+      display: block; 
+     
+      width: 85%;
+      font-size: 16px;
+      padding: 10px;
+      padding-left: 20px; 
+     
+     
+     
+      
+       
+    } 
+  
+   
+    .fonts{
+      margin-right: 19px;
+      font-size: 19px;
+    } 
+  
+   
+    
+  
+  
+  
+  .btn-primary {
+    margin-top: 10px; 
+  }
+  
+
+
+
+  
+    .active-link {
+      background-color: rgb(31, 29, 29);
+     border-radius: 8px;
+     color: rgb(214, 208, 208); 
+     margin-right: 0px;
+     
+     
+    
+    
+   }  
+  
+
+
+
+   
+   .sidebar-link:not(.active-link):hover {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .active-link:hover {
+    text-decoration: none;
+    color: rgb(214, 208, 208); 
+  }
+
+  .sidebar-logo{
+
+    width: 200px;
+    height: 100px;
+  }
+
+  .techjays{
+    width: 200px;
+    height: 60px;
+    position:  relative;
+    margin-top: 40px;
+    margin-left: 43px;
+  }
+
+  .sidebar-link:not(.active-link):hover {
+    color: rgb(243, 243, 243); /* Change to the desired hover color */
+    background-color: rgb(51, 49, 49);
+    border-radius: 8px;
+  }
+  

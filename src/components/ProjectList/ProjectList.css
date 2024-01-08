@@ -1,0 +1,65 @@
+
+.project-box {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 70px;
+    width: 1300px;
+    height: 80px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    margin-top: 3px;
+   
+  }
+  
+  .project-box h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .project-box p {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: -48px;
+    margin-left: 580px;
+  }
+  
+  .member-container {
+    margin-right: -20px;
+    margin-bottom: 10px;
+  }
+  
+  .member-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .member-container p {
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+
+ .input-with-placeholder::placeholder {
+  color: #c9c6c6;
+ 
+}

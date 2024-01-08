@@ -1,0 +1,144 @@
+.table-container {
+    margin-top: -553px;
+    width: 1070px;
+    margin-left: 300px;
+    
+    /* overflow: auto; */
+    border-radius: 11px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border: 1px solid white; 
+    
+    
+    
+    box-shadow: 0 0 10px 5px rgba(245, 245, 245, 0.3);  
+    
+   
+   
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 10px;
+    text-align: left;
+     
+  }
+  
+  .custom-table th {
+    /* background-color:#dde0ecd5; */
+    background-color:#e2e5ebd5;
+     color: #050404;
+     
+   
+  }
+  .custom-table td {
+
+    background-color: white;
+    padding:28px;
+    border: 1px solid #f1efef; 
+   
+   
+  }
+   
+  
+ .option-box{
+
+    background-color: rgb(204, 23, 23);
+    box-shadow: #050404;
+ }
+
+.chevron{
+
+   background-color: rgb(0, 0, 0);
+   color: white;
+   border-radius: 4px;
+    font-size: 13px;
+   position: absolute;
+  
+    top: 21%;
+    left: -29px;
+    cursor: pointer;
+}
+
+
+
+
+@media only screen and (min-width: 200px) and (max-width:1268px) {
+ .container-fluid{
+  width: 100%;
+  
+
+
+ }
+
+
+ .custom-table{
+
+  width: 100%;
+  overflow: auto;
+ 
+  
+ }
+ .table-container table{
+  width: 10%;
+ 
+ }
+ #tablestatus {
+
+  width: 750px;
+  margin-right: 50px;
+ 
+ 
+
+ }
+ #tablestatus #t1{
+  width: 20%;
+  
+ }
+
+ #tablestatus #t2{
+
+  margin-right: 20px;
+  width: 120px;
+ }
+ #t1{
+  width:  20% !important;
+ }
+ #t2{
+  width: 10% !important;
+ }
+ #t3{
+  width: 10% !important;
+ }
+#t4{
+  width: 10% !important;
+}
+#btn1{
+
+  margin-left: 10px; 
+  position: relative;
+  left: 893px !important; 
+  top: 110px;
+}
+#btn2{
+
+  margin-left: 10px; 
+  position: relative;
+  left: 720px !important; 
+  top: 110px; 
+ 
+}
+#userd{
+  position: absolute;
+  left: -300px !important;
+  
+ 
+}
+
+} 
+

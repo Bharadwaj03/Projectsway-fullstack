@@ -1,0 +1,36 @@
+.formcontainer {
+    width: 600px;
+    padding: 20px;
+    height: 900px;
+
+    border-radius: 8px;
+    transition: opacity 0.3s ease-in-out;
+    margin-top: 20px;
+ 
+  }
+  
+ #priority{
+  height: 10px;
+  width: 250px;
+  padding: 18px;
+  margin-right: 150px;
+  margin-bottom: 11px;
+ }
+
+ #location{
+  
+
+  margin-left: 260px;
+  width: 200px;
+  height: 10px;
+  padding: 22px;
+  position: absolute;
+  top: 20%;
+  right: 13%;
+
+ 
+ }
+
+ #description{
+  margin-bottom: '10px';
+ }
