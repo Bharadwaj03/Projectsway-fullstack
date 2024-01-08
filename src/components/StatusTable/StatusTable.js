@@ -16,7 +16,6 @@ const StatusTable = () => {
   console.log("name", name);
   const image = localStorage.getItem('googleUserProfileUrl');
   const { listUrl} = useParams(); 
-  console.log('List URL from params:', listUrl); 
   console.log('List URL:', listUrl);
   const projectName = localStorage.getItem('projectName');
   console.log('p',projectName)
