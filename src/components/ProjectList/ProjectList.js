@@ -56,16 +56,16 @@ const ProjectList = () => {
   
       if (clickedListId === listIdFromUrl) {
         console.log('Match found. List URL:', url);
+        localStorage.setItem('clickedListId', clickedListId);
         navigate(`/statustable/${clickedListId}?listUrl=${encodeURIComponent(url)},`);
        
      
       
-        return; // Exit the loop once a match is found
+        return; 
       }
     }
   
-    // If no match is found
-    // console.error('Clicked list ID is not mapped to a list URL');
+  
   };
   
   return (
