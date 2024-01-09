@@ -8,7 +8,7 @@ import { FaSearch } from 'react-icons/fa';
 import './ProjectList.css';
 
 const ProjectList = () => {
-  const [taskIds, setTaskIds] = useState(['85zrqrgrw', '86cu9n4tb']);
+  const [taskIds, setTaskIds] = useState(['85zrqrgrw', '86cu9n4tb','86cu9ecau']);
   const [taskData, setTaskData] = useState([]);
   console.log("f",taskData)
   const navigate =useNavigate()
