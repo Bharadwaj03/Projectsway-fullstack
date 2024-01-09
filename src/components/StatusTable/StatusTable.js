@@ -1,10 +1,12 @@
 
 
+
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './StatusTable.css';
 import Sidebar from '../SideBar/SideBar';
-import { FaEllipsisV, FaTrashAlt, FaChevronDown, FaShare } from 'react-icons/fa';
+import { FaEllipsisV, FaTrashAlt,  FaShare } from 'react-icons/fa';
 
 const StatusTable = () => {
   const [showOptions, setShowOptions] = useState(null);
@@ -19,6 +21,9 @@ const StatusTable = () => {
   console.log('List URL:', listUrl);
   const projectName = localStorage.getItem('projectName');
   console.log('p',projectName)
+  const [sprints, setSprints] = useState([]);
+  console.log("sprintsname",sprints)
+  
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -54,6 +59,56 @@ const StatusTable = () => {
 
     fetchPhaseSprintData();
   }, []);
+
+
+  const handleSprintChange = async (selectedSprint) => {
+    console.log('Dropdown changed. Selected Sprint:', selectedSprint);
+  
+  
+    const folderLink = encodeURIComponent('https://app.clickup.com/9002025943/v/f/90020111801/90020047409');
+    const response = await fetch(`http://localhost:8000/api/get_sprints/${folderLink}`);
+    
+    if (!response.ok) {
+      console.error('Error fetching sprints:', response.statusText);
+      return;
+    }
+  
+    const sprintNames = await response.json();
+    console.log('Fetched sprint names:', sprintNames);
+   
+    setSprints(sprintNames.sprints);
+  
+ 
+    const selectedSprintId = sprintNames.sprints.find(sprint => sprint.name === selectedSprint)?.id;
+  
+    if (!selectedSprintId) {
+      console.error('Selected sprint ID not found.');
+      return;
+    }
+    console.log('Selected sprint ID:', selectedSprintId);
+  
+    try {
+      
+      const selectedListUrl = `https://app.clickup.com/9002025943/v/li/${selectedSprintId}`;
+      console.log('Constructed List URL:', selectedListUrl);
+     
+      const tasksResponse = await fetch(`http://localhost:8000/api/get_tasks_from_list_url/${encodeURIComponent(selectedListUrl)}`);
+  
+      if (!tasksResponse.ok) {
+        console.error('Error fetching tasks for the selected sprint:', tasksResponse.statusText);
+        return;
+      }
+  
+      const tasks = await tasksResponse.json();
+      console.log('Fetched tasks:', tasks);
+      setTaskData(tasks);
+    } catch (error) {
+      console.error('Error handling sprint selection:', error.message);
+    }
+  };
+  
+
+
   const handleShareDocument = () => {
     console.log('Share Document clicked');
     setShowOptions(null);
@@ -112,11 +167,25 @@ const StatusTable = () => {
 
   return (
     <div className="App">
+
+
+
+
+ 
+
       <div className="container-fluid">
+      <select className='selectdropdown' onClick={() => handleSprintChange()} onChange={(e) => handleSprintChange(e.target.value)}>
+  <option value="" disabled selected>Select a Sprint</option>
+  {sprints.map(sprint => (
+    <option key={sprint.id} value={sprint.name}>{sprint.name}</option>
+  ))}
+</select>
+    
         <div id='eee' className="row">
+      
           <Sidebar />
           <button id='btn1'
-            className="btn btn-primary"
+            className="btn btn-primary" onClick={handleSprintChange}
             style={{ color: 'white', padding: '10px 20px', borderRadius: '10px', cursor: 'pointer', margin: '10px 0', position: 'absolute', left: '1220px', top: '150px', backgroundColor: '' }}
           >
             New milestone
@@ -139,15 +208,7 @@ const StatusTable = () => {
             textAlign: 'start',
             width: '100%',
           }}>
-            <FaChevronDown style={{marginTop:'7px'}} className='chevron' />
            
-            {phaseSprintData && (
-  <div style={{ textAlign: 'left', marginTop: '10px' }}>
-    <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '5px',color:'black' }}>
-      {phaseSprintData.phase_name} - {phaseSprintData.sprint_name}
-    </p>
-  </div>
-)}
 
           </div>
 
@@ -275,8 +336,3 @@ const StatusTable = () => {
 };
 
 export default StatusTable;
-
-
-
-
-
