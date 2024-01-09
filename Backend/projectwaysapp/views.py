@@ -740,3 +740,39 @@ def get_phase_sprint_names(request, phase_url):
     else:
         print("Error fetching phase details. Response text:", phase_response.text)
         return JsonResponse({'error': 'Error fetching phase details'},)
+
+
+
+
+
+
+### fetching sprintname 
+    
+
+from django.http import JsonResponse
+import requests
+
+def get_sprints(request, folder_link):
+    
+    folder_id = folder_link.split('/')[-2]  
+
+   
+    access_token = '88837891_d3a01f8424aaa53bee8374ce4c5b83698caca1d724d9af5c0d9ef1753129651a'
+    url = f'https://api.clickup.com/api/v2/folder/{folder_id}/list'
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.get(url, headers=headers)
+
+    try:
+        response.raise_for_status()  
+        data = response.json()
+        print('data',data)
+        sprints = [{'id': list_info['id'], 'name': list_info['name']} for list_info in data['lists']]
+        return JsonResponse({'sprints': sprints})
+    except requests.HTTPError as e:
+        return JsonResponse({'error': f'Unable to fetch sprints. ClickUp API error: {str(e)}'}, status=response.status_code)
+    except Exception as e:
+        return JsonResponse({'error': f'An unexpected error occurred: {str(e)}'}, status=500)
