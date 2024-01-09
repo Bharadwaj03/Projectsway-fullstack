@@ -29,6 +29,7 @@ urlpatterns=[
            path('api/get_tasks_from_list_url/<path:list_url>/', get_tasks_from_list_url, name='get_tasks_from_list_url'),
            
           path('api/get_phase_sprint_names/<path:phase_url>/', get_phase_sprint_names, name='get_phase_sprint_names'),
+           path('api/get_sprints/<path:folder_link>/', get_sprints, name='get_sprints'),
          
     
 
