@@ -39,7 +39,7 @@ function App() {
     <Routes>
       <Route path='documentation' element={<Documentation/>}></Route>
       <Route path='registration' element={<Registration/>}></Route>
-      <Route path='login' element={<Login/>}></Route>
+      <Route path='/' element={<Login/>}></Route>
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password/:uidb64/:token" element={<ResetPassword />} />
       <Route path='sidebar' element={<Sidebar/>}></Route>

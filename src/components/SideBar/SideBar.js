@@ -25,6 +25,14 @@ const Sidebar = () => {
     setActiveLink(path);
   }, []);
 
+  const handleSignout = () => {
+    // Perform signout logic here, e.g., clear local storage or call your authentication API
+    // After signout, redirect to the login page
+    // For now, let's clear the local storage as an example
+    localStorage.clear();
+    navigate('/login'); // Assuming '/login' is the login page route
+  };
+
 
   const handleBackClick = () => {
     
@@ -112,6 +120,9 @@ const Sidebar = () => {
               </Link>
             </li>
           </ul>
+          <button className="signout-button" onClick={handleSignout}>
+                Sign Out
+              </button>
         </nav>
       </div>
     </div>
