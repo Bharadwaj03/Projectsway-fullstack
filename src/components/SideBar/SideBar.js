@@ -30,7 +30,7 @@ const Sidebar = () => {
     // After signout, redirect to the login page
     // For now, let's clear the local storage as an example
     localStorage.clear();
-    navigate('/login'); // Assuming '/login' is the login page route
+    navigate('/'); // Assuming '/login' is the login page route
   };
 
 
