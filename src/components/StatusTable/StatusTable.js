@@ -96,7 +96,9 @@ const StatusTable = () => {
       case 'no fix needed':
         return 'rgba(150, 155, 217)'; 
       case 'in progress':
-        return 'black'; 
+        return 'green'; 
+      case 'Open':
+        return 'lightgrey'
 
       case 'to do':
         return 'rgba(200, 200, 204)'
@@ -137,7 +139,7 @@ const StatusTable = () => {
             textAlign: 'start',
             width: '100%',
           }}>
-            <FaChevronDown className='chevron' />
+            <FaChevronDown style={{marginTop:'7px'}} className='chevron' />
            
             {phaseSprintData && (
   <div style={{ textAlign: 'left', marginTop: '10px' }}>
@@ -155,7 +157,7 @@ const StatusTable = () => {
                 <thead>
                   <tr id='r3'>
                     <th id='t1' className="col-md-4 sm-2" style={{ width: '1660px', fontSize: '16px', paddingLeft: '33px' }}>Name</th>
-                    <th id='t3' className="col-md-2" style={{ width: '690px', paddingLeft: '49px', fontSize: '16px' }}>Priority</th>
+                    <th id='t3' className="col-md-2" style={{ width: '690px', paddingLeft: '73px', fontSize: '16px' }}>Priority</th>
                     <th id='t4' className="col-md-2" style={{ width: '690px', paddingLeft: '83px', fontSize: '16px' }}>Status</th>
                     <th id='t5' className="col-md-2" style={{ width: '690px', paddingLeft: '29px', fontSize: '16px' }}>Est.Deliv Date</th>
                   </tr>
